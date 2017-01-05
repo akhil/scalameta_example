@@ -9,9 +9,9 @@ object Test {
   implicit val ttl = 1
 
   @Debug
-  def test(input1: String, input2: String): Unit = {
+  def test(input1: String, input2: String, input3: Seq[String]): Unit = {
     println("Call hello" + input1 + input2)
   }
 
-  test("test1", "test2")
+  test("test1", "test2", Seq("1", "2"))
 }

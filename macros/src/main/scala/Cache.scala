@@ -11,11 +11,11 @@ class Cache(implicit ttl: Int) extends scala.annotation.StaticAnnotation {
       case defn: Defn.Def =>
         println("11111")
         defn.tparams
-        val s =
+        /*val s =
           q"""
                     $ttl
           """
-        println(s)
+        println(s)*/
         //println(ttl)
         println(defn.show[Structure])
         defn
@@ -31,7 +31,7 @@ class Debug extends scala.annotation.StaticAnnotation {
   inline def apply(defn: Any): Any = meta {
     defn match {
       case defn: Defn.Def =>
-        val printlnStatements = defn.tparams.map { param =>
+        val printlnStatements = defn.paramss.flatten.map { param =>
           q"""println(
                 ${param.name.syntax} + ": " +
                 ${Term.Name(param.name.value)})"""
